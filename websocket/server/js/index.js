@@ -20,7 +20,8 @@
     }
 
     function handleEventMessage(msg){
-      console.log('handleEventMessage', msg, ws.clients);
+      console.log('handleEventMessage', msg);
+    //   console.log('ws.clients', ws.clients)
     //   ws.clients 所有的客户端连接 发送给所有连接的客户端消息
       ws.clients.forEach(c => {
           c.send(msg);
