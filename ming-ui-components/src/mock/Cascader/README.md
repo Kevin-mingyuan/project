@@ -14,8 +14,11 @@
 <script>
 import { reactive, toRefs } from 'vue';
 import data from './mock/Cascader';
+import Cascader from './components/Cascader/Cascader.vue';
+import CascaderItem from './components/Cascader/CascaderItem.vue';
 
 export default {
+  components: { Cascader, CascaderItem },
   name:"APP",
   setup(props, ctx){
     const state = reactive({

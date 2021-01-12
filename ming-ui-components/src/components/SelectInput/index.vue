@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import Input from "./input";
+import Input from "./Input";
 import focus from "../../directive/focus";
-import Menu from './menu';
+import Menu from './Menu'; 
 import { reactive, toRefs } from 'vue';
 
 export default {
