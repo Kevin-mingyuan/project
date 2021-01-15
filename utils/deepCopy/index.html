@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // var obj = {a:1, b:{b1:1,c:{c1:[12,3123,32434,22]}}};
+    var obj = [1,2,3,{c:22, d:[2,2,2]}, [234,3214], 'haha']
+    function type(val){
+        return Object.prototype.toString.call(val);
+    }
+
+    function deep(obj){
+        if(typeof obj === 'object'){
+            var newObj = {}; //默认对象
+            if(type(obj) === '[object Array]'){
+                newObj = [];
+                obj.forEach((item, index, arr) => {
+                    if(type(item) === '[object Object]'){
+                        console.log('Object', item)
+                        newObj[index] = deep(item);
+                    }else if(type(item) === '[object Array]'){
+                        console.log('Array', item)
+                        newObj[index] = deep(item);
+                    }else{
+                        newObj[index] = item;
+                    }
+                })
+            }else if (type(obj) === '[object Object]'){
+                for(let key in obj){
+                    if(type(obj[key]) === '[object Object]'){
+                        newObj[key] = deep(obj[key]);
+                    }else if(type(obj[key]) === '[object Array]'){
+                        newObj[key] = deep(obj[key]);
+                    }else{
+                        newObj[key] = obj[key];
+                        console.log(newObj)
+                    }
+                }
+            }
+
+            return newObj;
+        }else{
+            return obj;
+        }
+    }
+    let deepObj = deep(obj);
+    console.log('socure', obj);
+    console.log("copy", deepObj);
+</script>
+</html>
